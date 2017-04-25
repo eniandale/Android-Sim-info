@@ -11,6 +11,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.Manifest.permission;
 import android.content.pm.PackageManager;
+import android.support.v7.app.AlertDialog;
+import android.os.Build;
+import android.content.DialogInterface;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -106,10 +109,20 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     else{
-                        alltext.setText("I need both permissions");
+
                     }
                     break;
                 }
         }
+    }
+
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(MainActivity.this)
+                .setMessage(message)
+                .setPositiveButton("OK", okListener)
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
     }
 }
